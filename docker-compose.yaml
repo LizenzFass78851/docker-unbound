@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  pihole:
+    container_name: unbound
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/lizenzfass78851/docker-unbound:latest
+    hostname: unbound
+    ports:
+      - 53:5335/tcp
+      - 53:5335/udp
+    restart: unless-stopped
+
