@@ -1,6 +1,9 @@
 FROM alpine:3.22 AS base
 RUN apk add --no-cache \
-    bash bind-tools
+    bash bind-tools \
+    openssl
+
+# --------------------------------------------------------------------------------
 
 FROM base
 RUN apk add --no-cache \
