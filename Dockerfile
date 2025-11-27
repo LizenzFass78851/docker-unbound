@@ -1,8 +1,19 @@
-FROM alpine:3.22
+FROM alpine:3.22 AS base
+RUN apk add --no-cache \
+    bash bind-tools
+
+FROM base
 RUN apk add --no-cache \
     unbound
 
 COPY unbound-standalone.conf /etc/unbound/unbound.conf.d/standalone.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s \
+    CMD dig @localhost -p 5335 one.one.one.one A +short | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' || \
+        dig @localhost -p 5335 dns.google      A +short | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' || \
+        exit 1
+
+EXPOSE 5335/udp 5335/tcp
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
