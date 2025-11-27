@@ -13,7 +13,7 @@ The base image for the container is the Alpine Dockerimage, with an extra build 
 
 | Image | Tag | Build | Latest |
 |:------------------:|:--------------:|:-----------------:|:-----------------:|
-| ghcr.io/lizenzfass78851/docker-unbound | main | [![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg?branch=stable)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml) | 📌 |
+| ghcr.io/lizenzfass78851/docker-unbound | main | [![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml) | 📌 |
 
 ## Docker run
 
