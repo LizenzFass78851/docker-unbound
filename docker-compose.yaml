@@ -9,7 +9,7 @@ services:
     image: ghcr.io/lizenzfass78851/docker-unbound:latest
     hostname: unbound
     ports:
-      - 53:5335/tcp
-      - 53:5335/udp
+      - 5335:5335/tcp
+      - 5335:5335/udp
     restart: unless-stopped
 
