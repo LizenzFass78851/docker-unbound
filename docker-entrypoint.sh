@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-UNBOUND_CONF="/etc/unbound/unbound.conf.d/pi-hole.conf"
+UNBOUND_CONF="/etc/unbound/unbound.conf.d/standalone.conf"
 
 DAEMON="/usr/sbin/unbound"
 DAEMON_OPTS=""
