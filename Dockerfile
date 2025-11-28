@@ -1,13 +1,11 @@
-FROM alpine:3.22 AS base
-RUN apk add --no-cache \
-    bash bind-tools \
-    openssl
+FROM alpinelinux/unbound:latest
 
-# --------------------------------------------------------------------------------
-
-FROM base
 RUN apk add --no-cache \
-    unbound
+    bash bind-tools
+
+WORKDIR /
+RUN rm -rf /etc/unbound \
+ && mkdir -p /etc/unbound /etc/unbound/unbound.conf.d
 
 COPY unbound-standalone.conf /etc/unbound/unbound.conf.d/standalone.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
