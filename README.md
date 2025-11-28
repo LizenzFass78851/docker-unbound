@@ -4,7 +4,7 @@
 
 This Docker deployment runs Unbound in a single container. 
 
-The base image for the container is the Alpine Docker image, with an extra build step added to install the Unbound resolver directly into to the container based on [instructions provided directly by the Pi-Hole team](https://docs.pi-hole.net/guides/unbound/).
+The base image for the container is the [Alpine Unbound](https://hub.docker.com/r/alpinelinux/unbound) Docker image, with an extra build step added to install the Unbound resolver directly into to the container based on [instructions provided directly by the Pi-Hole team](https://docs.pi-hole.net/guides/unbound/).
 
 > [!IMPORTANT]
 > This Project based on the [docker-pihole-unbound](https://github.com/fabianbees/docker-pihole-unbound) Project by [fabianbees](https://github.com/fabianbees)
