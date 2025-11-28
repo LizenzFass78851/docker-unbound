@@ -1,11 +1,10 @@
 FROM alpinelinux/unbound:latest
 
+WORKDIR /
+RUN rm -rf /usr/local/bin/*
+
 RUN apk add --no-cache \
     bash bind-tools
-
-WORKDIR /
-RUN rm -rf /etc/unbound \
- && mkdir -p /etc/unbound /etc/unbound/unbound.conf.d
 
 COPY unbound-standalone.conf /etc/unbound/unbound.conf.d/standalone.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
