@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-UNBOUND_CONF="/etc/unbound/unbound.conf.d/standalone.conf"
+UNBOUND_CONF="/etc/unbound/unbound.conf"
 
 DAEMON="/usr/sbin/unbound"
 DAEMON_OPTS=""

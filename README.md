@@ -26,7 +26,12 @@ docker run -d \
 
 ### Using Portainer stacks?
 
-Copy/paste the content of the `docker-compose.yaml` file into Portainer's stack editor
+Portainer stacks are a little weird and don't want you to declare your named volumes, so remove this block from the top of the `docker-compose.yaml` file before copy/pasting into Portainer's stack editor:
+
+```yaml
+volumes:
+  unbound.conf.d:
+```
 
 ### Running the stack
 

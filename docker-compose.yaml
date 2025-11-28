@@ -1,5 +1,8 @@
 version: '2'
 
+volumes:
+  unbound.conf.d:
+
 services:
   unbound:
     container_name: unbound
@@ -11,5 +14,6 @@ services:
     ports:
       - 5335:5335/tcp
       - 5335:5335/udp
+    volumes:
+      - unbound.conf.d:/etc/unbound/unbound.conf.d:ro
     restart: unless-stopped
-

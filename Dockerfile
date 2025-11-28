@@ -6,7 +6,7 @@ RUN rm -rf /usr/local/bin/*
 RUN apk add --no-cache \
     bash bind-tools
 
-COPY unbound-standalone.conf /etc/unbound/unbound.conf.d/standalone.conf
+COPY unbound-standalone.conf /etc/unbound/unbound.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s \
