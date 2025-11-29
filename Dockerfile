@@ -10,7 +10,7 @@ COPY unbound-standalone.conf /etc/unbound/unbound.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN mkdir -p /run/unbound && \
-    if [ ! $(id "unbound") ] >/dev/null 2>&1; then \
+    if ! id "unbound" >/dev/null 2>&1; then \
         addgroup -g 1500 unbound; \
         adduser -D -H -u 1500 -G unbound -s /bin/sh unbound; \
     fi && \
