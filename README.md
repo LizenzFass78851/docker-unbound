@@ -21,6 +21,9 @@ The base image for the container is the [Alpine Unbound](https://hub.docker.com/
 docker run -d \
   --name='unbound' \
   --hostname=unbound \
+  --volume "$PWD/unbound.conf.d/":'/etc/unbound/unbound.conf.d/':'ro' \
+  --publish 5335:5335/tcp \
+  --publish 5335:5335/udp \
   'ghcr.io/lizenzfass78851/docker-unbound:latest'
 ```
 
