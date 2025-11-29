@@ -3,11 +3,10 @@
 UNBOUND_CONF="/etc/unbound/unbound.conf"
 
 DAEMON="/usr/sbin/unbound"
-DAEMON_OPTS=""
+DAEMON_OPTS="-v"
 
 ANCHOR="/usr/sbin/unbound-anchor"
-
-PIHOLE="/usr/bin/start.sh"
+CHECKCONF="/usr/sbin/unbound-checkconf"
 
 # ----------------------------------------------------------------
 
@@ -20,6 +19,14 @@ fi
 
 echo starting unbound
 $ANCHOR -v
+
+$CHECKCONF $UNBOUND_CONF
+for c in /etc/unbound/unbound.conf.d/*.conf; do
+    if [[ -e "$c" ]]; then
+        "$CHECKCONF" "$c"
+    fi
+done
+
 $DAEMON -d $DAEMON_OPTS -c $UNBOUND_CONF
 
 exec "$@"
