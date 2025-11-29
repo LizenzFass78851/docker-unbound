@@ -20,7 +20,7 @@ RUN mkdir -p /run/unbound && \
             /usr/share/dnssec-root 
 USER unbound
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s \
+HEALTHCHECK --interval=30s --timeout=10s \
     CMD dig @localhost -p 5335 one.one.one.one A +short | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' || \
         dig @localhost -p 5335 dns.google      A +short | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' || \
         exit 1
