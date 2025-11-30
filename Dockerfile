@@ -1,18 +1,24 @@
-FROM alpinelinux/unbound:latest
+FROM alpine:3.22
 
-WORKDIR /
+RUN mv /etc/apk/repositories /etc/apk/repositories.bak && \
+    echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories && \
+    echo "https://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    apk add --no-cache unbound openssl && \
+    mv /etc/apk/repositories.bak /etc/apk/repositories
 
-RUN rm -rf /usr/local/bin/* && \
-    apk add --no-cache \
+RUN apk add --no-cache \
     bash bind-tools
 
 COPY unbound-standalone.conf /etc/unbound/unbound.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-RUN mkdir -p /run/unbound && \
-    chown -R unbound:unbound \
-        /etc/unbound /run/unbound \
-        /usr/share/dnssec-root
+RUN mkdir -p /run/unbound \
+    && unbound -V \
+    && unbound-anchor -v || true
+
+RUN chown -R unbound:unbound \
+    /etc/unbound /run/unbound \
+    /usr/share/dnssec-root
 
 USER unbound
 
