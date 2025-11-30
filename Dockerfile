@@ -1,23 +1,19 @@
 FROM alpinelinux/unbound:latest
 
 WORKDIR /
-RUN rm -rf /usr/local/bin/*
 
-RUN apk add --no-cache \
+RUN rm -rf /usr/local/bin/* && \
+    apk add --no-cache \
     bash bind-tools
 
 COPY unbound-standalone.conf /etc/unbound/unbound.conf
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN mkdir -p /run/unbound && \
-    if ! id "unbound" >/dev/null 2>&1; then \
-        addgroup -g 1500 unbound; \
-        adduser -D -H -u 1500 -G unbound -s /bin/sh unbound; \
-    fi && \
-        chown -R unbound:unbound \
-            /etc/unbound \
-            /run/unbound \
-            /usr/share/dnssec-root 
+    chown -R unbound:unbound \
+        /etc/unbound /run/unbound \
+        /usr/share/dnssec-root
+
 USER unbound
 
 HEALTHCHECK --interval=30s --timeout=10s \
