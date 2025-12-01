@@ -1,8 +1,8 @@
-FROM alpine:3.22
+FROM alpine:latest
 
+COPY --from=alpine:edge /etc/apk/repositories /etc/apk/repositories.new
 RUN mv /etc/apk/repositories /etc/apk/repositories.bak && \
-    echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories && \
-    echo "https://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    mv /etc/apk/repositories.new /etc/apk/repositories && \
     apk add --no-cache unbound openssl && \
     mv /etc/apk/repositories.bak /etc/apk/repositories
 
