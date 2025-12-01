@@ -1,8 +1,8 @@
-name: Build and Publish Docker Image
+name: Build as Matrix and Publish Docker Image
 
 on:
-  push:
-    branches: [ "stable", "newest" ]
+  schedule:
+    - cron: '20 14 * * 2'
   workflow_dispatch:
 
 env:
@@ -12,6 +12,10 @@ env:
 
 jobs:
   build_amd64_arm64_arm:
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ["stable", "newest"]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,6 +25,8 @@ jobs:
       - name: Checkout Dockerfile
         id: checkout
         uses: actions/checkout@v6
+        with:
+          ref: ${{ matrix.target }}
 
       - name: Setup QEMU
         id: qemu
@@ -47,7 +53,8 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           flavor: |
-            latest=${{ startsWith(github.ref, 'refs/heads/stable') }}
+            latest=${{ startsWith(env.TARGET_BRANCH, 'refs/heads/stable') }}
+          tags: ${{ matrix.target }}
 
       - name: Build and push main Docker image
         id: build

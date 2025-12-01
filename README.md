@@ -4,7 +4,7 @@
 
 This Docker deployment runs Unbound in a single container. 
 
-The base image for the container is the [Alpine Unbound](https://hub.docker.com/r/alpinelinux/unbound) Docker image, with an extra build step added to install the Unbound resolver directly into to the container based on [instructions provided directly by the Pi-Hole team](https://docs.pi-hole.net/guides/unbound/).
+The base image for the container is the [Alpine](https://hub.docker.com/_/alpine) Docker image, with an extra build step added to install the Unbound resolver directly into to the container based on [instructions provided directly by the Pi-Hole team](https://docs.pi-hole.net/guides/unbound/).
 
 > [!IMPORTANT]
 > This Project based on the [docker-pihole-unbound](https://github.com/fabianbees/docker-pihole-unbound) Project by [fabianbees](https://github.com/fabianbees)
@@ -13,7 +13,12 @@ The base image for the container is the [Alpine Unbound](https://hub.docker.com/
 
 | Image | Tag | Build | Latest |
 |:------------------:|:--------------:|:-----------------:|:-----------------:|
-| ghcr.io/lizenzfass78851/docker-unbound | main | [![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml) | 📌 |
+| ghcr.io/lizenzfass78851/docker-unbound | stable | [![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg?branch=stable)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml) | 📌 |
+| ghcr.io/lizenzfass78851/docker-unbound | newest | [![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg?branch=newest)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml) |  |
+
+- Matrix Build State
+
+[![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image-matrix.yml/badge.svg)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image-matrix.yml)
 
 ## Docker run
 

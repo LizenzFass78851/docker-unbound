@@ -7,3 +7,12 @@ updates:
       interval: "weekly"
       day: saturday
       time: "09:00"
+    target-branch: newest
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: saturday
+      time: "09:00"
+    target-branch: stable

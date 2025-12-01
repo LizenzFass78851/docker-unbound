@@ -2,7 +2,7 @@ name: Docker Image CI (Test Build)
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "stable", "newest" ]
 
 env:
   IMAGE_NAME: ${{ github.event.pull_request.base.repo.name }}

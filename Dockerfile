@@ -1,10 +1,9 @@
-FROM alpine:latest
+FROM alpine:edge AS unbound
 
-COPY --from=alpine:edge /etc/apk/repositories /etc/apk/repositories.new
-RUN mv /etc/apk/repositories /etc/apk/repositories.bak && \
-    mv /etc/apk/repositories.new /etc/apk/repositories && \
-    apk add --no-cache unbound openssl && \
-    mv /etc/apk/repositories.bak /etc/apk/repositories
+RUN apk add --no-cache \
+    unbound openssl
+
+FROM unbound
 
 RUN apk add --no-cache \
     bash bind-tools
