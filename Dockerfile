@@ -1,4 +1,4 @@
-FROM alpine:edge AS unbound
+FROM alpine:3.22 AS unbound
 
 RUN apk add --no-cache \
     unbound openssl
