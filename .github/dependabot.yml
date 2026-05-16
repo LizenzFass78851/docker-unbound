@@ -7,7 +7,6 @@ updates:
       interval: "weekly"
       day: saturday
       time: "09:00"
-    target-branch: newest
     groups:
       github_action-dependencies:
         patterns:
@@ -19,4 +18,3 @@ updates:
       interval: "weekly"
       day: saturday
       time: "09:00"
-    target-branch: stable

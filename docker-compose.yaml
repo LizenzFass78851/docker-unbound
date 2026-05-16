@@ -9,6 +9,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        BUILD_CHANNEL: stable
     image: ghcr.io/lizenzfass78851/docker-unbound:latest
     hostname: unbound
     ports:

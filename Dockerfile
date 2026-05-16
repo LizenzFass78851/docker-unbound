@@ -1,4 +1,9 @@
-FROM alpine:3.23 AS unbound
+ARG BUILD_CHANNEL=stable
+
+FROM alpine:3.23 AS stable
+FROM alpine:edge AS newest
+
+FROM ${BUILD_CHANNEL} AS unbound
 
 RUN apk add --no-cache \
     unbound openssl

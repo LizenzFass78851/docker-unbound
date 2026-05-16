@@ -11,14 +11,14 @@ The base image for the container is the [Alpine](https://hub.docker.com/_/alpine
 
 # Tags
 
-| Image | Tag | Build | Latest |
-|:------------------:|:--------------:|:-----------------:|:-----------------:|
-| ghcr.io/lizenzfass78851/docker-unbound | stable | [![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg?branch=stable)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml) | 📌 |
-| ghcr.io/lizenzfass78851/docker-unbound | newest | [![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg?branch=newest)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml) |  |
+| Image | Tag | Latest |
+|:------------------:|:--------------:|:-----------------:|
+| ghcr.io/lizenzfass78851/docker-unbound | stable | 📌 |
+| ghcr.io/lizenzfass78851/docker-unbound | newest |  |
 
 - Matrix Build State
 
-[![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image-matrix.yml/badge.svg)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image-matrix.yml)
+[![Build and Publish Docker Image](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml/badge.svg)](https://github.com/LizenzFass78851/docker-unbound/actions/workflows/docker-image.yml)
 
 ## Docker run
 
