@@ -71,8 +71,6 @@ DOMAIN_NAME=pihole.local
 </details>
 
 ```yaml
-version: '2'
-
 services:
   pihole:
     container_name: pihole
@@ -87,15 +85,22 @@ services:
       - 53:53/udp   # DNS
       - 80:80/tcp   # HTTP
       - 443:443/tcp # HTTPS
+      #- 67:67/udp   # DHCP
+      #- 123:123/udp # NTP
     environment:
       - TZ=${TZ}
       - FTLCONF_webserver_api_password=${FTLCONF_webserver_api_password}
       - FTLCONF_dns_revServers=${FTLCONF_dns_revServers}
       - FTLCONF_dns_upstreams=unbound#5335 # Hardcoded to our Unbound server
       - FTLCONF_dns_dnssec=true # Enable DNSSEC
+      - FTLCONF_dns_listeningMode=ALL # If using Docker's default `bridge` network setting the dns listening mode should be set to 'ALL'
     volumes:
       - etc_pihole:/etc/pihole:rw
       - etc_pihole_dnsmasq:/etc/dnsmasq.d:rw
+    cap_add:
+      #- NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+      #- SYS_TIME  # Required if you are using Pi-hole as your NTP client to be able to set the host's system time
+      - SYS_NICE  # Optional, if Pi-hole should get some more processing time
     networks:
       - pihole-unbound
     restart: unless-stopped
