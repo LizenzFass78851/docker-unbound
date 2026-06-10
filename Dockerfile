@@ -1,6 +1,6 @@
 ARG BUILD_CHANNEL=stable
 
-FROM alpine:3.23 AS stable
+FROM alpine:3.24 AS stable
 FROM alpine:edge AS newest
 
 FROM ${BUILD_CHANNEL} AS unbound
